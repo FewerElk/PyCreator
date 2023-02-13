@@ -69,8 +69,8 @@ class App(object):
     def add_cmd(self, event=None):
         for i in self.sugg.curselection():  #1 boucle seulemnt, c obligé. Sinon, c qu'il y a bug de logique
             print(i)                    #Exécuté normalement
-            m = MessageBox(i)           #Exécuté normalement à vu d'oeil (?)
-            print(m.get())              #non exécuté en tant réel
+            m = MessageBox(i)           #Exécuté normalement à vu d'oeil (?). Est censé s'arrêter quand la fenetre est fermée
+            print(m.get())              #NON exécuté en tant réel
             self.lstcmd.append(i)       #idem...
             print(self.lstcmd)
             print(self.sugg.get(i) + ' (id {0}) a ete ajoute dans la liste.'.format(i))
