@@ -89,6 +89,8 @@ class PyBundler(object):
 
 
 class MessageBox(object):
+    response = ""
+    response_type = ""
     def __init__(self, id):
         self.id = id
 
@@ -103,7 +105,7 @@ class MessageBox(object):
         mainloop()
 
     def get(self):
-        self.entree.get()
+        return (self.response, self.response_type)
 
     def id0(self):
         Label(self.root, text="Choississez les valeurs pour l'agument 'texte' :").pack()
@@ -117,12 +119,15 @@ class MessageBox(object):
         self.b2.pack()
 
         Label(self.root, text="Choississez le nom de la variable ou le contenu du texte :").pack()
-        self.entree = Entry(self.root, width=50)
+        self.var = StringVar()
+        self.entree = Entry(self.root, width=50, textvariable=self.var)
         self.entree.pack()
 
-        Button(self.root, text="OK").pack()
+        Button(self.root, text="OK", command=self.root.destroy).pack()
 
-
+    def actualite(self):
+        self.response = self.var.get()
+        self.response_type = self.choose.get()
 
     def id1(self):
         pass
