@@ -1,6 +1,5 @@
 """App de creation de code python 3
-VERSION EN DEVELOPPEMENT. UNE ERREUR EMPECHEE LE mainloop() DE FONCTIONNER CORRECTEMENT. SI VOUS AVEZ UNE IDÉE, CONTACTEZ-MOI.
-(désolé, je fais un test de branch... je sais pas comment ça marche...)"""
+VERSION EN DEVELOPPEMENT. UNE ERREUR EMPECHEE LE mainloop() DE FONCTIONNER CORRECTEMENT. SI VOUS AVEZ UNE IDÉE, CONTACTEZ-MOI."""
 #IMPORT
 from tkinter import *
 from tkinter.scrolledtext import *
