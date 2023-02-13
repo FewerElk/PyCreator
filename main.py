@@ -37,7 +37,7 @@ class App(object):
         #########################BUTTONS#############################
 
 
-        self.okbutton = Button(self.toolsframe, text="OK", command=self.add_cmd)
+        self.okbutton = Button(self.toolsframe, text="AJOUTER", command=self.add_cmd)
         self.okbutton.pack()
 
         self.delbutton = Button(self.toolsframe, text="SUPPRIMER")
@@ -67,10 +67,12 @@ class App(object):
         mainloop()
 
     def add_cmd(self, event=None):
-        for i in self.sugg.curselection():
-            m = MessageBox(i)
-            print(m.get())
-            self.lstcmd.append(i)
+        for i in self.sugg.curselection():  #1 boucle seulemnt, c obligé. Sinon, c qu'il y a bug de logique
+            print(i)                    #Exécuté normalement
+            m = MessageBox(i)           #Exécuté normalement à vu d'oeil (?)
+            print(m.get())              #non exécuté en tant réel
+            self.lstcmd.append(i)       #idem...
+            print(self.lstcmd)
             print(self.sugg.get(i) + ' (id {0}) a ete ajoute dans la liste.'.format(i))
 
 class PyBundler(object):
@@ -98,17 +100,17 @@ class MessageBox(object):
         self.root = Tk()
         self.root.title("Arguments pour l'element selectionne")
 
-        if self.id == 0:
+        if self.id == 0:        #en cours de code.
             self.id0()
-        elif self.id == 1:
+        elif self.id == 1:      #non codé et non testé
             self.id1()
 
-        mainloop()
+        mainloop()      #le fameux mainloop()
 
     def get(self):
         return (self.response, self.response_type)
 
-    def id0(self):
+    def id0(self):          #le bug est surement ici
         Label(self.root, text="Choississez les valeurs pour l'agument 'texte' :").pack()
 
         Label(self.root, text="Choississez le type de l'argument :").pack()
