@@ -126,11 +126,12 @@ class MessageBox(object):
         self.entree = Entry(self.root, width=50, textvariable=self.var)
         self.entree.pack()
 
-        Button(self.root, text="OK", command=self.root.destroy).pack()
+        Button(self.root, text="OK", command=self.actualite).pack()
 
     def actualite(self):
         self.response = self.var.get()
         self.response_type = self.choose.get()
+        self.root.destroy()
 
     def id1(self):
         pass
