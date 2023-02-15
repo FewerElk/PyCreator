@@ -69,8 +69,11 @@ class App(object):
     def add_cmd(self, event=None):
         for i in self.sugg.curselection():  #1 boucle seulemnt, c obligé. Sinon, c qu'il y a bug de logique
             print(i)                    #Exécuté normalement
+            print("---------Messagebox---------------")
             m = MessageBox(i)           #Exécuté normalement à vu d'oeil (?). Est censé s'arrêter quand la fenetre est fermée
+            print("On est revenu à add_cmd, mais on va vers get()")
             print(m.get())              #NON exécuté en tant réel
+            print("--------Fin de Messagebox---------")
             self.lstcmd.append(i)       #idem...
             print(self.lstcmd)
             print(self.sugg.get(i) + ' (id {0}) a ete ajoute dans la liste.'.format(i))
@@ -104,8 +107,9 @@ class MessageBox(object):
             self.id0()
         elif self.id == 1:      #non codé et non testé
             self.id1()
-
+        print("end of init of gui")
         mainloop()      #le fameux mainloop()
+        print("end")
 
     def get(self):
         return (self.response, self.response_type)
@@ -115,23 +119,29 @@ class MessageBox(object):
 
         Label(self.root, text="Choississez le type de l'argument :").pack()
         self.choose = StringVar()
-        self.b1 = Radiobutton(self.root, text="Texte fixe", value="txt", variable=self.choose)
+        #self.choose.set("txt")
+        self.b1 = Radiobutton(self.root, text="Texte fixe", value="txt", variable=self.choose, command=self.actualite)
         self.b1.pack()
 
-        self.b2 = Radiobutton(self.root, text="Variable personnalisée", value="var", variable=self.choose)
+        self.b2 = Radiobutton(self.root, text="Variable personnalisée", value="var", variable=self.choose, command=self.actualite)
         self.b2.pack()
 
+        self.b1.select()
+
         Label(self.root, text="Choississez le nom de la variable ou le contenu du texte :").pack()
-        self.var = StringVar()
-        self.entree = Entry(self.root, width=50, textvariable=self.var)
+        #self.var = StringVar()
+        self.entree = Entry(self.root, width=50)#, textvariable=self.var
         self.entree.pack()
 
-        Button(self.root, text="OK", command=self.actualite).pack()
+        Button(self.root, text="OK", command=self.root.destroy).pack()
 
     def actualite(self):
-        self.response = self.var.get()
+        print("Actualisation")
+        self.response = self.entree.get()
+        print("Réponse : {0}".format(self.response))
         self.response_type = self.choose.get()
-        self.root.destroy()
+        print("Réponse_type : {0}".format(self.response_type))
+        #self.root.destroy()
 
     def id1(self):
         pass
