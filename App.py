@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter.scrolledtext import *
 import tkinter.simpledialog
-import Messagebox as Msg
+import Messagebox as Msg#
 
 class App(object):
     """Classe de l'application"""
