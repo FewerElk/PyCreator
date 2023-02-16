@@ -5,4 +5,4 @@ import App
 
 #MAIN
 if __name__ == "__main__":
-    a = App()
+    a = App.App()
