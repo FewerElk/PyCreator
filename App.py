@@ -60,10 +60,9 @@ class App(object):
 
     def add_cmd(self, event=None):
         for i in self.sugg.curselection():  #1 boucle seulemnt, c obligé. Sinon, c qu'il y a bug de logique
-            print(i)                    #Exécuté normalement
             print("---------Messagebox---------------")
             m = Msg.MessageBox(i)           #Exécuté normalement à vu d'oeil (?). Est censé s'arrêter quand la fenetre est fermée
-            print("On est revenu à add_cmd, mais on va vers get()")
+            print("On est revenu à add_cmd, mais on va vers m.get()")
             print(m.get())              #NON exécuté en tant réel
             print("--------Fin de Messagebox---------")
             self.lstcmd.append(i)       #idem...
